@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Krasimir Velkov">
+
+    <title>Радио плейър</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="radios.css" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="radios.js"></script>
+  </head>
+
+  <body class="text-center">
+      <form class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">Радио плейър</h1>
+        <div class="form-group">
+          <select class="form-control" id="radios">
+            <option disabled selected>Избери радио</option>
+            <option>БНР Хоризонт</option>
+            <option>БНР Шумен</option>
+            <option>Радио 1</option>
+            <option>Радио 1 Рок</option>
+            <option>БГ Радио</option>
+            <option>Вероника</option>
+            <option>Веселина</option>
+            <option>The Voice</option>
+            <option>Energy</option>
+            <option>N-Joy</option>
+            <option>City</option>
+            <option>Fresh!</option>
+            <option>Мая</option>
+          </select>
+        </div>
+        <div class="slidecontainer">
+          <label>Сила на звука</label>
+          <input type="range" min="10" max="100" value="100" class="slider" id="slider">
+        </div>
+        <p class="mt-5 mb-3 text-muted">&copy; 2018 - ТЕХНОСИСТЕМ България ООД</p>
+      </form>
+  </body>
+</html>
