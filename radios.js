@@ -57,7 +57,7 @@ $(document).ready(function(){
 
     });
 
-    Защита от копиране!
+    // Защита от копиране!
     $(document).keydown(function (event) {
         return false;
     });
