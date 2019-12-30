@@ -47,28 +47,15 @@ $(document).ready(function(){
 
     $( ".slider" ).change(function() {
         var rawvolume = $('#slider').val();
-        var volume = ("0." + rawvolume);
+        var volume;
 
+        if (rawvolume < 10) volume = ("0.0" + rawvolume)
+        else volume = ("0." + rawvolume)
+        
         switch(volume) {
             case "0": audioElement.volume=0; break;
             case "0.100": audioElement.volume=1; break;
             default: audioElement.volume=volume; break
         }
-
     });
-
-    // Защита от копиране!
-    $(document).keydown(function (event) {
-        return false;
-    });
-
-    $(document).on("contextmenu", function (e) {        
-        e.preventDefault();
-    });
-
-    $("body").css("-webkit-user-select","none");
-    $("body").css("-moz-user-select","none");
-    $("body").css("-ms-user-select","none");
-    $("body").css("-o-user-select","none");
-    $("body").css("user-select","none");
 });
