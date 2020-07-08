@@ -1,16 +1,16 @@
 ﻿// Линкове към радиотата
 var radios = [
-    "http://stream.bnr.bg:8011/horizont.aac", // БНР Хоризонт
-    "http://stream.bnr.bg:8033/radio-shumen.aac", // БНР Шумен
-    "http://stream.radioreklama.bg/radio1128", // Радио 1
-    "http://stream.radioreklama.bg/radio1rock128", // Радио 1 Рок
-    "http://stream.radioreklama.bg/bgradio128", // БГ Радио
-    "http://stream.radioreklama.bg/veronika128", // Вероника
+    "http://lb-hls.cdn.bg/2032/fls/Horizont.stream/playlist.m3u8", // БНР Хоризонт
+    "http://lb-hls.cdn.bg/2032/fls/Shumen.stream/playlist.m3u8", // БНР Шумен
+    "https://play.global.audio/radio1128", // Радио 1
+    "https://play.global.audio/radio1rock128", // Радио 1 Рок
+    "https://play.global.audio/bgradio128", // БГ Радио
+    "https://play.global.audio/veronika128", // Вероника
     "https://bss.neterra.tv/rtplive/veselinaradio_live.stream/playlist.m3u8", // Веселина
     "https://bss.neterra.tv/rtplive/thevoiceradio_live.stream/playlist.m3u8", // The Voice
-    "http://stream.radioreklama.bg/nrj128", // Energy
+    "https://play.global.audio/nrj128", // Energy
     "http://46.10.150.243/njoy.mp3", // N-Joy (зарежда по-бавно)
-    "http://stream.radioreklama.bg/city128", // City
+    "https://play.global.audio/city128", // City
     "http://193.108.24.21:8000/fresh", // Fresh!
     "http://www.rnmediagroup.com:11000/;" // Мая
 ]
@@ -24,13 +24,12 @@ $(document).ready(function(){
         var radioname = $('#radios option:selected').val();
 
         switch(radioname) {
-            case "БНР Хоризонт": audioElement.setAttribute('src', radios[0]); break;
-            case "БНР Шумен": audioElement.setAttribute('src', radios[1]); break;
+            case "БНР Хоризонт": audioElement.setAttribute('src', ""); hls.loadSource(radios[0]); hls.attachMedia(audioElement); break;
+            case "БНР Шумен": audioElement.setAttribute('src', ""); hls.loadSource(radios[1]); hls.attachMedia(audioElement); break;
             case "Радио 1": audioElement.setAttribute('src', radios[2]); break;
             case "Радио 1 Рок": audioElement.setAttribute('src', radios[3]); break;
             case "БГ Радио": audioElement.setAttribute('src', radios[4]); break;
             case "Вероника": audioElement.setAttribute('src', radios[5]); break;
-            // За тези две използваме hls.js поради m3u8 файловете
             case "Веселина": audioElement.setAttribute('src', ""); hls.loadSource(radios[6]); hls.attachMedia(audioElement); break;
             case "The Voice": audioElement.setAttribute('src', ""); hls.loadSource(radios[7]); hls.attachMedia(audioElement); break;
             case "Energy": audioElement.setAttribute('src', radios[8]); break;
