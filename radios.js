@@ -41,6 +41,7 @@ $(document).ready(function(){
             default: alert("Грешка!");
         }
 
+        audioElement.volume=0.5;
         audioElement.play();
     });
 
