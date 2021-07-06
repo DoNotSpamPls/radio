@@ -9,19 +9,28 @@ var radios = [
     "https://bss.neterra.tv/rtplive/veselinaradio_live.stream/playlist.m3u8", // Веселина
     "https://bss.neterra.tv/rtplive/thevoiceradio_live.stream/playlist.m3u8", // The Voice
     "https://play.global.audio/nrj128", // Energy
-    "http://46.10.150.243/njoy.mp3", // N-Joy (зарежда по-бавно)
+    "https://bravo.btv.bg/radio/njoy-radio-proxy/index.php", // N-Joy (зарежда по-бавно)
     "https://play.global.audio/city128", // City
     "http://193.108.24.21:8000/fresh", // Fresh!
     "http://www.rnmediagroup.com:11000/;" // Мая
 ]
 
+var config = {
+    maxMaxBufferLength: 30,
+    backBufferLength: 0,
+};
+
+var hls = null;
 var audioElement = document.createElement('audio');
-var hls = new Hls();
 
 $(document).ready(function(){
     $("select").change(function(){
         // име на избраното радиото
         var radioname = $('#radios option:selected').val();
+        
+        audioElement.pause();
+        if (hls != null) { hls.stopLoad(); hls.detachMedia(); }
+        hls = new Hls(config);
 
         switch(radioname) {
             case "БНР Хоризонт": audioElement.setAttribute('src', ""); hls.loadSource(radios[0]); hls.attachMedia(audioElement); break;
@@ -33,7 +42,7 @@ $(document).ready(function(){
             case "Веселина": audioElement.setAttribute('src', ""); hls.loadSource(radios[6]); hls.attachMedia(audioElement); break;
             case "The Voice": audioElement.setAttribute('src', ""); hls.loadSource(radios[7]); hls.attachMedia(audioElement); break;
             case "Energy": audioElement.setAttribute('src', radios[8]); break;
-            //case "N-Joy": audioElement.setAttribute('src', radios[9]); break;
+            case "N-Joy": audioElement.setAttribute('src', radios[9]); break;
             case "City": audioElement.setAttribute('src', radios[10]); break;
             //case "Fresh!": audioElement.setAttribute('src', radios[11]); break;
             //case "Мая": audioElement.setAttribute('src', radios[12]); break;
@@ -41,7 +50,7 @@ $(document).ready(function(){
             default: alert("Грешка!");
         }
 
-        audioElement.volume=0.5;
+        audioElement.volume="0." + $('#slider').val();
         audioElement.play();
     });
 

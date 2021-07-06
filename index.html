@@ -8,12 +8,12 @@
     <link rel="shortcut icon" href="favicon.ico" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="radios.css" rel="stylesheet">
 
     <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.0.7/hls.min.js"></script>
     <script src="radios.js"></script>
   </head>
 
@@ -42,12 +42,6 @@
           <label>Сила на звука</label>
           <input type="range" min="0" max="100" value="50" class="slider" id="slider">
         </div>
-        <p class="mt-5 mb-3">&copy; 
-          <span id="year">2000</span> - DoNotSpamPls
-        </p>
       </form>
-      <script>
-        document.getElementById("year").innerHTML = new Date().getFullYear();
-      </script>
   </body>
 </html>
