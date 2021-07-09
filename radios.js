@@ -1,4 +1,4 @@
-﻿// Линкове към радиотата
+﻿// Линкове към радио станциите
 var radios = [
     "https://lb-hls.cdn.bg/2032/fls/Horizont.stream/playlist.m3u8", // БНР Хоризонт
     "https://lb-hls.cdn.bg/2032/fls/Shumen.stream/playlist.m3u8", // БНР Шумен
@@ -9,28 +9,26 @@ var radios = [
     "https://bss.neterra.tv/rtplive/veselinaradio_live.stream/playlist.m3u8", // Веселина
     "https://bss.neterra.tv/rtplive/thevoiceradio_live.stream/playlist.m3u8", // The Voice
     "https://play.global.audio/nrj128", // Energy
-    "https://bravo.btv.bg/radio/njoy-radio-proxy/index.php", // N-Joy (зарежда по-бавно)
+    "https://bravo.btv.bg/radio/njoy-radio-proxy/index.php", // N-Joy
     "https://play.global.audio/city128", // City
     "http://193.108.24.21:8000/fresh", // Fresh!
     "http://www.rnmediagroup.com:11000/;" // Мая
 ]
-
-var config = {
-    maxMaxBufferLength: 30,
-    backBufferLength: 0,
-};
 
 var hls = null;
 var audioElement = document.createElement('audio');
 
 $(document).ready(function(){
     $("select").change(function(){
-        // име на избраното радиото
+        // име на избраното радио
         var radioname = $('#radios option:selected').val();
         
         audioElement.pause();
         if (hls != null) { hls.stopLoad(); hls.detachMedia(); }
-        hls = new Hls(config);
+        hls = new Hls({
+            maxMaxBufferLength: 30,
+            backBufferLength: 0,
+        });
 
         switch(radioname) {
             case "БНР Хоризонт": audioElement.setAttribute('src', ""); hls.loadSource(radios[0]); hls.attachMedia(audioElement); break;
@@ -50,21 +48,9 @@ $(document).ready(function(){
             default: alert("Грешка!");
         }
 
-        audioElement.volume="0." + $('#slider').val();
+        audioElement.volume=$('#slider').val()/100;
         audioElement.play();
     });
 
-    $( ".slider" ).change(function() {
-        var rawvolume = $('#slider').val();
-        var volume;
-
-        if (rawvolume < 10) volume = ("0.0" + rawvolume)
-        else volume = ("0." + rawvolume)
-        
-        switch(volume) {
-            case "0": audioElement.volume=0; break;
-            case "0.100": audioElement.volume=1; break;
-            default: audioElement.volume=volume; break
-        }
-    });
+    $( ".slider" ).on('input change', function() { audioElement.volume=$('#slider').val()/100; });
 });
