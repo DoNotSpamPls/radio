@@ -1,7 +1,7 @@
 ﻿// Линкове към радио станциите
 var radios = [
-    "https://lb-hls.cdn.bg/2032/fls/Horizont.stream/playlist.m3u8", // БНР Хоризонт
-    "https://lb-hls.cdn.bg/2032/fls/Shumen.stream/playlist.m3u8", // БНР Шумен
+    "https://lb-hls.evpn.bg/2032/fls/Horizont.stream/playlist.m3u8", // БНР Хоризонт
+    "https://lb-hls.evpn.bg/2032/fls/Shumen.stream/playlist.m3u8", // БНР Шумен
     "https://play.global.audio/radio1128", // Радио 1
     "https://play.global.audio/radio1rock128", // Радио 1 Рок
     "https://play.global.audio/bgradio128", // БГ Радио
