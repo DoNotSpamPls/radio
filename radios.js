@@ -6,8 +6,8 @@ var radios = [
     "https://play.global.audio/radio1rock128", // Радио 1 Рок
     "https://play.global.audio/bgradio128", // БГ Радио
     "https://play.global.audio/veronika128", // Вероника
-    "https://bss.neterra.tv/rtplive/veselinaradio_live.stream/playlist.m3u8", // Веселина
-    "https://bss.neterra.tv/rtplive/thevoiceradio_live.stream/playlist.m3u8", // The Voice
+    "https://bss1.neterra.tv/veselina/stream_0.m3u8", // Веселина
+    "https://bss1.neterra.tv/thevoicefm/stream_0.m3u8", // The Voice
     "https://play.global.audio/nrj128", // Energy
     "https://bravo.btv.bg/radio/njoy-radio-proxy/index.php", // N-Joy
     "https://play.global.audio/city128", // City
