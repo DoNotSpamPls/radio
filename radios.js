@@ -12,7 +12,7 @@ var radios = [
     "https://bravo.btv.bg/radio/njoy-radio-proxy/index.php", // N-Joy
     "https://play.global.audio/city128", // City
     "http://193.108.24.21:8000/fresh", // Fresh!
-    "http://www.rnmediagroup.com:11000/;" // Мая
+    "https://radio.rn-tv.com:8000/stream/1/" // Мая
 ]
 
 var hls = null;
@@ -43,7 +43,7 @@ $(document).ready(function(){
             case "N-Joy": audioElement.setAttribute('src', radios[9]); break;
             case "City": audioElement.setAttribute('src', radios[10]); break;
             //case "Fresh!": audioElement.setAttribute('src', radios[11]); break;
-            //case "Мая": audioElement.setAttribute('src', radios[12]); break;
+            case "Мая": audioElement.setAttribute('src', radios[12]); break;
             // Радиото не е в списъка (не би трябвало да се случва)
             default: alert("Грешка!");
         }
