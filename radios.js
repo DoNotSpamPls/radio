@@ -15,8 +15,21 @@ var radios = [
     "https://radio.rn-tv.com:8000/stream/1/" // Мая
 ]
 
-var hls = null;
+var hls = new Hls({
+    maxMaxBufferLength: 30,
+    backBufferLength: 0,
+});
 var audioElement = document.createElement('audio');
+
+function setupHLSPlayback(hls, hlsUrl) {
+    const supportHLS = Boolean(audioElement.canPlayType("application/vnd.apple.mpegurl"));
+    if (supportHLS) {
+      audioElement.src = hlsUrl;
+    } else {
+      hls.loadSource(hlsUrl);
+      hls.attachMedia(audioElement);
+  }
+}
 
 $(document).ready(function(){
     $("select").change(function(){
@@ -25,25 +38,21 @@ $(document).ready(function(){
         
         audioElement.pause();
         if (hls != null) { hls.stopLoad(); hls.detachMedia(); }
-        hls = new Hls({
-            maxMaxBufferLength: 30,
-            backBufferLength: 0,
-        });
 
         switch(radioname) {
-            case "БНР Хоризонт": audioElement.setAttribute('src', ""); hls.loadSource(radios[0]); hls.attachMedia(audioElement); break;
-            case "БНР Шумен": audioElement.setAttribute('src', ""); hls.loadSource(radios[1]); hls.attachMedia(audioElement); break;
-            case "Радио 1": audioElement.setAttribute('src', radios[2]); break;
-            case "Радио 1 Рок": audioElement.setAttribute('src', radios[3]); break;
-            case "БГ Радио": audioElement.setAttribute('src', radios[4]); break;
-            case "Вероника": audioElement.setAttribute('src', radios[5]); break;
-            case "Веселина": audioElement.setAttribute('src', ""); hls.loadSource(radios[6]); hls.attachMedia(audioElement); break;
-            case "The Voice": audioElement.setAttribute('src', ""); hls.loadSource(radios[7]); hls.attachMedia(audioElement); break;
-            case "Energy": audioElement.setAttribute('src', radios[8]); break;
-            case "N-Joy": audioElement.setAttribute('src', radios[9]); break;
-            case "City": audioElement.setAttribute('src', radios[10]); break;
-            case "Fresh!": audioElement.setAttribute('src', radios[11]); break;
-            case "Мая": audioElement.setAttribute('src', radios[12]); break;
+            case "БНР Хоризонт": audioElement.src = ""; setupHLSPlayback(hls, radios[0]); break;
+            case "БНР Шумен": audioElement.src = ""; setupHLSPlayback(hls, radios[1]); break;
+            case "Радио 1": audioElement.src = radios[2]; break;
+            case "Радио 1 Рок": audioElement.src = radios[3]; break;
+            case "БГ Радио": audioElement.src = radios[4]; break;
+            case "Вероника": audioElement.src = radios[5]; break;
+            case "Веселина": audioElement.src = ""; setupHLSPlayback(hls, radios[6]); break;
+            case "The Voice": audioElement.src = ""; setupHLSPlayback(hls, radios[7]); break;
+            case "Energy": audioElement.src = radios[8]; break;
+            case "N-Joy": audioElement.src = radios[9]; break;
+            case "City": audioElement.src = radios[10]; break;
+            case "Fresh!": audioElement.src = radios[11]; break;
+            case "Мая": audioElement.src = radios[12]; break;
             // Радиото не е в списъка (не би трябвало да се случва)
             default: alert("Грешка!");
         }
